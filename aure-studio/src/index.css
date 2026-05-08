@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --pearl-white: #faf9f6;
+  --pastel-lavender: #e6e6fa;
+  --baby-pink: #f4c2c2;
+  --soft-gold: #d4af37;
+  --peach: #ffe5b4;
+  --holographic-glow: rgba(255, 255, 255, 0.4);
+  --text-dark: #2c2c2c;
+  --text-light: #5a5a5a;
+  
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px 0 rgba(230, 230, 250, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, var(--pearl-white), var(--pastel-lavender), var(--baby-pink));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Typography Utility */
+.heading-luxury {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: linear-gradient(45deg, var(--soft-gold), var(--text-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dark);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: all 0.6s ease;
+}
+
+.glass-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+/* Sparkles & Glows */
+.glowing-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(244, 194, 194, 0.6);
+}
+
+.holographic-border {
+  position: relative;
+}
+
+.holographic-border::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, var(--pastel-lavender), var(--baby-pink), var(--peach), var(--pearl-white));
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.5;
+  filter: blur(10px);
+  animation: borderGlow 4s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { filter: blur(10px); opacity: 0.5; }
+  50% { filter: blur(15px); opacity: 0.8; }
+  100% { filter: blur(10px); opacity: 0.5; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--pearl-white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--baby-pink);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pastel-lavender);
+}
+
+/* Layout Utilities */
+.section {
+  padding: 100px 5%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}

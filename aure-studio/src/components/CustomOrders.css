@@ -1,0 +1,179 @@
+.custom-orders-section {
+  background: var(--pearl-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background floating elements */
+.custom-orders-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(244,194,194,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.custom-orders-container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.order-text {
+  flex: 1;
+  padding: 50px;
+}
+
+.order-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 20px 0 40px;
+  color: var(--text-light);
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.step {
+  position: relative;
+  padding-left: 50px;
+}
+
+.step-num {
+  position: absolute;
+  left: 0;
+  top: -10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgba(212, 175, 55, 0.2);
+}
+
+.step h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.step p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.order-form-container {
+  flex: 1;
+  padding: 40px;
+  position: relative;
+}
+
+.order-form h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: var(--text-dark);
+  border: none;
+  border-bottom: 1px solid var(--glass-border);
+  outline: none;
+  background: transparent;
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.3s;
+}
+
+.input-group textarea {
+  resize: vertical;
+}
+
+.input-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 1rem;
+  color: var(--text-light);
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+  top: -20px;
+  font-size: 0.8rem;
+  color: var(--soft-gold);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-bottom-color: var(--soft-gold);
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+}
+
+.upload-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed var(--soft-gold);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 15px;
+}
+
+.success-message {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.success-message h3 {
+  color: var(--soft-gold);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .custom-orders-container {
+    flex-direction: column;
+  }
+}
