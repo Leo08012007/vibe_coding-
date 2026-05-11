@@ -3,6 +3,7 @@ import HeroCanvas from '../components/HeroCanvas';
 import Collections from '../components/Collections';
 import CustomOrders from '../components/CustomOrders';
 import About from '../components/About';
+import Reviews from '../components/Reviews';
 import { useCart } from '../context/CartContext';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Collections onAddToCart={addToCart} />
       <CustomOrders />
       <About />
+      <Reviews />
     </main>
   );
 }

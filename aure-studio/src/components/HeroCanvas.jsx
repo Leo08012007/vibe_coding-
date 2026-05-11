@@ -32,10 +32,14 @@ export default function HeroCanvas() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     
-    // Resize to fit screen but keep aspect ratio
+    // Resize to fit screen but keep aspect ratio + Retina support
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.scale(dpr, dpr);
     };
     window.addEventListener('resize', resize);
     resize();
@@ -57,17 +61,17 @@ export default function HeroCanvas() {
         
         const img = images[Math.min(frame, FRAME_COUNT - 1)];
         if (img) {
-          // Calculate scale to cover canvas (like object-fit: cover)
-          const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-          const x = (canvas.width / 2) - (img.width / 2) * scale;
-          const y = (canvas.height / 2) - (img.height / 2) * scale;
+          const scale = Math.max(window.innerWidth / img.width, window.innerHeight / img.height);
+          const x = (window.innerWidth / 2) - (img.width / 2) * scale;
+          const y = (window.innerHeight / 2) - (img.height / 2) * scale;
           ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
         }
 
-        // Particle effects overlay could be added here, but we can do it via CSS/Framer
-        
         if (frame < FRAME_COUNT - 1) {
           frame++;
+        } else {
+          // Once animation finished, we can switch to high-res static or keep last frame
+          // We'll use the static image overlay for maximum quality in phase 3
         }
       }
     };
@@ -75,9 +79,9 @@ export default function HeroCanvas() {
     animationId = requestAnimationFrame(drawFrame);
 
     // Sequence text phases
-    setTimeout(() => setPlayPhase(1), 500); // WELCOME TO THE WORLD OF RESIN
-    setTimeout(() => setPlayPhase(2), 3500); // Handcrafted with Love
-    setTimeout(() => setPlayPhase(3), 6500); // Scroll indicator
+    setTimeout(() => setPlayPhase(1), 500); 
+    setTimeout(() => setPlayPhase(2), 3500); 
+    setTimeout(() => setPlayPhase(3), 6500); 
 
     return () => {
       cancelAnimationFrame(animationId);
@@ -86,7 +90,7 @@ export default function HeroCanvas() {
   }, [loaded]);
 
   return (
-    <div className="hero-container">
+    <div id="home" className="hero-container">
       {!loaded && (
         <div className="loader">
           <motion.div 
@@ -131,16 +135,58 @@ export default function HeroCanvas() {
           )}
           {playPhase === 3 && (
             <motion.div
-              key="scroll"
+              key="main-content"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="scroll-indicator"
+              transition={{ duration: 1.5 }}
+              className="hero-main-content"
             >
               <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="scroll-dot"
-              />
+                className="hero-content-card glass-panel"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+              >
+                <h1 className="hero-title-main heading-luxury">
+                  Handcrafted Resin Art <br/> That Preserves Beauty Forever
+                </h1>
+                <p className="hero-description-main">
+                  Luxury handmade resin creations with floral elegance and timeless aesthetics. 
+                  Every piece is a singular expression of beauty, frozen in time.
+                </p>
+                <div className="hero-cta-group">
+                  <motion.a 
+                    href="#collections"
+                    className="cta-button gold-pill"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Shop Collection
+                  </motion.a>
+                  <motion.a 
+                    href="#custom-orders"
+                    className="cta-button glass-pill"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Custom Orders
+                  </motion.a>
+                </div>
+              </motion.div>
+              
+              <motion.div
+                key="scroll"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2 }}
+                className="scroll-indicator"
+              >
+                <motion.div 
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  className="scroll-dot"
+                />
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
