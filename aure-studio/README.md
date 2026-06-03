@@ -1,16 +1,74 @@
-# React + Vite
+# ✨ Brindha's Resin Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium resin art e-commerce website built with modern web technologies, featuring cinematic animations, user authentication, order management, and a luxury-inspired user experience.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Deployed on Vercel
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Authentication
+- User Registration & Login
+- Firebase Authentication
+- Persistent User Sessions
+- Protected User Dashboard
 
-## Expanding the ESLint configuration
+### Shopping Experience
+- Product Collections
+- Add to Cart Functionality
+- Quantity Controls
+- Order Placement Workflow
+- Order History Tracking
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Custom Orders
+- Custom Resin Art Request Forms
+- User-Specific Request Storage
+- Firebase Database Integration
+
+### UI & Experience
+- Premium Glassmorphism Design
+- Smooth Scroll Animations
+- Responsive Mobile-First Layout
+- Luxury Pastel Aesthetic
+- Interactive Product Showcase
+- Cinematic Hero Animations
+
+### Backend Services
+- Firebase Authentication
+- Firestore Database
+- EmailJS Integration
+- Vercel Deployment
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React
+- Vite
+- JavaScript
+- CSS3
+
+### Backend & Services
+- Firebase Authentication
+- Cloud Firestore
+- EmailJS
+
+### Deployment
+- GitHub
+- Vercel
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/
+├── pages/
+├── assets/
+├── context/
+├── services/
+├── firebase/
+└── styles/
