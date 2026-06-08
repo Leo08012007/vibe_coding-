@@ -1,0 +1,53 @@
+.reviews-section {
+  background: transparent;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.review-card {
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.quote-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0.1;
+  color: var(--soft-gold);
+}
+
+.stars {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.review-content {
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.review-author h4 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.review-author span {
+  font-size: 0.85rem;
+  color: var(--soft-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
